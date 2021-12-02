@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .mode columns
 .headers on
 
@@ -47,12 +46,14 @@ INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VAL
 INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('19','1','Angra do Heroismo','200','19');
 INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('20','1','Ponta do Sol','300','22');
 INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('21','1','Estrangeiro','','99');
+INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('22','6','Maia','11A','13');
 
--- Escolas
+-- Escolas 
 INSERTO INTO Escola (idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('1', 'Escola Secundária de Amares', '403805', '301001', 'PUBLICO', '3');
 INSERTO INTO Escola (idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('2', 'Escola Secundária de Alcácer do Sal', '400749', '1501557', 'PUBLICO', '15');
 INSERTO INTO Escola (idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('3', 'Escola Secundária Dr. Joaquim Gomes Ferreira Alves', '401468', '1317381', 'PUBLICO', '13');
 INSERTO INTO Escola (idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('4', 'Escola Portuguesa de Macau', '935032', '4901825', 'PRIVADO', '21');
+INSERTO INTO Escola (idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('5', 'Escola Secundária da Maia', '403386', '1306608', 'PUBLICO', '22');
 
 -- Situação de Frequência do Aluno
 INSERTO INTO SitFreq (idSitFreq, descr) VALUES ('AE', 'Admitido a exame');
@@ -73,79 +74,58 @@ INSERTO INTO TipoCurso (codTipoCurso, nome, anoEscInicio, anoEscFinal) VALUES ('
 INSERTO INTO TipoCurso (codTipoCurso, nome, anoEscInicio, anoEscFinal) VALUES ('W', 'Via profissionalizante dos 10º/12º anos', '10', '12');
 
 -- Sub Tipo de Curso
-=======
-.mode columns
-.headers on
 
--- Distritos
-INSERT INTO Distrito (codDistrito, nome) VALUES ('1', 'Aveiro');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('2', 'Beja');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('3', 'Braga');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('4', 'Braganca');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('5', 'Castelo Branco');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('6', 'Coimbra');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('7', 'Evora');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('8', 'Faro');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('9', 'Guarda');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('10', 'Leiria');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('11', 'Lisboa');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('12', 'Portalegre');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('13', 'Porto');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('14', 'Santarem');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('15', 'Setubal');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('16', 'Viana do Castelo');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('17', 'Vila Real');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('18', 'Viseu');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('19', 'R. A. Acores');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('22', 'R. A. Madeira');
-INSERT INTO Distrito (codDistrito, nome) VALUES ('99', 'Estrangeiro');
+INSERT INTO SubTipoCurso (codSubTipoCurso, nome, codTipoCurso) VALUES ('C01','Cursos diurnos', 'C');
+INSERT INTO SubTipoCurso (codSubTipoCurso, nome, codTipoCurso) VALUES ('N26','Escola de Formação Social e Rural - Lamego e Leiria', 'N');
+INSERT INTO SubTipoCurso (codSubTipoCurso, nome, codTipoCurso) VALUES ('E01','Via de Ensino de 12º Ano', 'E');
+INSERT INTO SubTipoCurso (codSubTipoCurso, nome, codTipoCurso) VALUES ('N01','Cursos Científico-Humanísticos', 'N');
+INSERT INTO SubTipoCurso (codSubTipoCurso, nome, codTipoCurso) VALUES ('T01','Técnico-profissionais', 'T');
+INSERT INTO SubTipoCurso (codSubTipoCurso, nome, codTipoCurso) VALUES ('R03','Ensino artístico (Esc. Sec. Soares dos Reis)', 'R');
+INSERT INTO SubTipoCurso (codSubTipoCurso, nome, codTipoCurso) VALUES ('P02','Área 2 - Agro-alimentar', 'P');
+INSERT INTO SubTipoCurso (codSubTipoCurso, nome, codTipoCurso) VALUES ('Q01','Equivalências', 'Q');
+INSERT INTO SubTipoCurso (codSubTipoCurso, nome, codTipoCurso) VALUES ('U01','Ensino secundário recorrente', 'U');
+INSERT INTO SubTipoCurso (codSubTipoCurso, nome, codTipoCurso) VALUES ('V01','Via profissionalizante do 12º ano', 'V');
+INSERT INTO SubTipoCurso (codSubTipoCurso, nome, codTipoCurso) VALUES ('W01','Via profissionalizante dos 10º/12º anos', 'W');
 
--- Concelhos : 1 concelho de exemplo para cada Distrito
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('1','1','Agueda','16D','1');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('2','1','Aljustrel','184','2');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('3','1','Amares','112','3');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('4','1','Macedo de Cavaleiros','11E','4');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('5','1','Covilha','16J','5');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('6','1','Gois','16E','6');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('7','1','Estremoz','187','7');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('8','1','Portimao','150','8');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('9','1','Gouveia','16J','9');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('10','1','Alcobaca','16B','10');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('11','1','Loures','170','11');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('12','1','Monforte','186','12');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('13','1','Vila Nova de Gaia','11A','13');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('14','1','Rio Maior','185','14');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('15','1','Alcacer do Sal','181','15');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('16','1','Caminha','111','16');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('17','1','Chaves','11B','17');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('18','1','Mortagua','16E','18');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('19','1','Angra do Heroismo','200','19');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('20','1','Ponta do Sol','300','22');
-INSERTO INTO Concelho (idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('21','1','Estrangeiro','','99');
+-- Curso
 
--- Escolas
-INSERTO INTO Escola (idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('1', 'Escola Secundária de Amares', '403805', '301001', 'PUBLICO', '3');
-INSERTO INTO Escola (idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('2', 'Escola Secundária de Alcácer do Sal', '400749', '1501557', 'PUBLICO', '15');
-INSERTO INTO Escola (idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('3', 'Escola Secundária Dr. Joaquim Gomes Ferreira Alves', '401468', '1317381', 'PUBLICO', '13');
-INSERTO INTO Escola (idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('4', 'Escola Portuguesa de Macau', '935032', '4901825', 'PRIVADO', '21');
+INSERT INTO Curso (codCurso, nome, codSubTipoCurso) VALUES ('903','3º curso (despacho 64)','E01');
+INSERT INTO Curso (codCurso, nome, codSubTipoCurso) VALUES ('569','Educação Social (Port. 834/2009)','N26');
+INSERT INTO Curso (codCurso, nome, codSubTipoCurso) VALUES ('G71','Escola Secundária Soares dos Reis - Cursos do DL 286/89','R03');
+INSERT INTO Curso (codCurso, nome, codSubTipoCurso) VALUES ('950','Escolas Estrangeiras em Portugal','Q01');
+INSERT INTO Curso (codCurso, nome, codSubTipoCurso) VALUES ('C60','Ciências e Tecnologias','N01');
 
--- Situação de Frequência do Aluno
-INSERTO INTO SitFreq (idSitFreq, descr) VALUES ('AE', 'Admitido a exame');
-INSERTO INTO SitFreq (idSitFreq, descr) VALUES ('AM', 'Anulou a matricula');
-INSERTO INTO SitFreq (idSitFreq, descr) VALUES ('EF', 'Excluido por faltas');
-INSERTO INTO SitFreq (idSitFreq, descr) VALUES ('RF', 'Reprovou frequencia');
+-- Aluno
 
--- Tipo de Curso
-INSERTO INTO TipoCurso (codTipoCurso, nome, anoEscInicio, anoEscFinal) VALUES ('C', 'Cursos complementares dos 10º/11º anos', '10', '11');
-INSERTO INTO TipoCurso (codTipoCurso, nome, anoEscInicio, anoEscFinal) VALUES ('E', 'Via de ensino do 12º ano', '12', '12');
-INSERTO INTO TipoCurso (codTipoCurso, nome, anoEscInicio, anoEscFinal) VALUES ('N', 'Nivel secundario de educacao', '10', '12');
-INSERTO INTO TipoCurso (codTipoCurso, nome, anoEscInicio, anoEscFinal) VALUES ('P', 'Ensino profissional', '10', '12');
-INSERTO INTO TipoCurso (codTipoCurso, nome, anoEscInicio, anoEscFinal) VALUES ('Q', 'Equivalencias', '10', '12');
-INSERTO INTO TipoCurso (codTipoCurso, nome, anoEscInicio, anoEscFinal) VALUES ('R', 'Ensino secundario', '10', '12');
-INSERTO INTO TipoCurso (codTipoCurso, nome, anoEscInicio, anoEscFinal) VALUES ('T', 'Tecnico-profissionais', '10', '12');
-INSERTO INTO TipoCurso (codTipoCurso, nome, anoEscInicio, anoEscFinal) VALUES ('U', 'Ensino recorrente', '10', '12');
-INSERTO INTO TipoCurso (codTipoCurso, nome, anoEscInicio, anoEscFinal) VALUES ('V', 'Via profissionalizante do 12º ano', '10', '11');
-INSERTO INTO TipoCurso (codTipoCurso, nome, anoEscInicio, anoEscFinal) VALUES ('W', 'Via profissionalizante dos 10º/12º anos', '10', '12');
+INSERT INTO Aluno (idAluno, nome, sexo, dataNasc, codCurso) VALUES ('1','António Oliveira Ferreira','M','2002-09-27','C60');
+INSERT INTO Aluno (idAluno, nome, sexo, dataNasc, codCurso) VALUES ('2','Carlos Filipe Lopes','M','2001-01-16','P02');
+INSERT INTO Aluno (idAluno, nome, sexo, dataNasc, codCurso) VALUES ('3','Ana Maria Costa','F','1997-07-09','Q01');
+INSERT INTO Aluno (idAluno, nome, sexo, dataNasc, codCurso) VALUES ('4','Tomás Pereira Matos Gomes','M','2001-04-18','T01');
+INSERT INTO Aluno (idAluno, nome, sexo, dataNasc, codCurso) VALUES ('5','João Francisco Ferreira Maldonado','M','2002-12-29','R03');
 
--- Sub Tipo de Curso
->>>>>>> 421f6a91aa8fb3977bcfe179e065b64156b41a2c
+-- Exame
+
+INSERT INTO Exame (idExame, codExame, disciplina, fase, anoEscolaridade, anoLetivoInicio, anoLetivoFim, dataRealizacao) VALUES ('1','715','Física e Química A', '1','11','2019','2020',2020-07-01');
+INSERT INTO Exame (idExame, codExame, disciplina, fase, anoEscolaridade, anoLetivoInicio, anoLetivoFim, dataRealizacao) VALUES ('2','715','Física e Química A', '2','11','2019','2020',2020-08-03');
+INSERT INTO Exame (idExame, codExame, disciplina, fase, anoEscolaridade, anoLetivoInicio, anoLetivoFim, dataRealizacao) VALUES ('3','732','Latim A', '1','11','2019','2020',2020-07-05');
+INSERT INTO Exame (idExame, codExame, disciplina, fase, anoEscolaridade, anoLetivoInicio, anoLetivoFim, dataRealizacao) VALUES ('4','732','Latim A', '2','11','2019','2020',2020-08-09');
+INSERT INTO Exame (idExame, codExame, disciplina, fase, anoEscolaridade, anoLetivoInicio, anoLetivoFim, dataRealizacao) VALUES ('5','839','Português Língua não materna', '1','12','2018','2019','2019-07-03');
+INSERT INTO Exame (idExame, codExame, disciplina, fase, anoEscolaridade, anoLetivoInicio, anoLetivoFim, dataRealizacao) VALUES ('6','839','Português Língua não materna', '2','12','2018','2019','2019-08-02');
+
+-- Aluno Realiza o Exame
+
+INSERTO INTO AlunoRealiza (idAluno, idExame, idSitFeq, serInterno, classInt, notaExame, classFinal, paraAprov, paraMelhoria, provaIngresso, CFCEPE, anoEscolaridade) VALUES ('1','1','AE', 'S', '20', '14.7', '18', 'S', 'N', 'S', 'N', '11');
+INSERTO INTO AlunoRealiza (idAluno, idExame, idSitFeq, serInterno, classInt, notaExame, classFinal, paraAprov, paraMelhoria, provaIngresso, CFCEPE, anoEscolaridade) VALUES ('1','1','AE', 'S', '20', '19.9', '20', 'S', 'S', 'S', 'N', '12');
+INSERTO INTO AlunoRealiza (idAluno, idExame, idSitFeq, serInterno, classInt, notaExame, classFinal, paraAprov, paraMelhoria, provaIngresso, CFCEPE, anoEscolaridade) VALUES ('2','1','AM', 'N', '', '10', '10', 'S', 'N', 'S', 'N', '11');
+INSERTO INTO AlunoRealiza (idAluno, idExame, idSitFeq, serInterno, classInt, notaExame, classFinal, paraAprov, paraMelhoria, provaIngresso, CFCEPE, anoEscolaridade) VALUES ('4','3','RF', 'N', '', '20', '20', 'S', 'N', 'S', 'N', '11');
+INSERTO INTO AlunoRealiza (idAluno, idExame, idSitFeq, serInterno, classInt, notaExame, classFinal, paraAprov, paraMelhoria, provaIngresso, CFCEPE, anoEscolaridade) VALUES ('5','5','EF', 'N', '', '3', '3', 'S', 'N', 'S', 'N', '12');
+INSERTO INTO AlunoRealiza (idAluno, idExame, idSitFeq, serInterno, classInt, notaExame, classFinal, paraAprov, paraMelhoria, provaIngresso, CFCEPE, anoEscolaridade) VALUES ('5','6','EF', 'N', '', '1', '1', 'S', 'N', 'S', 'N', '12');
+
+-- Onde o Aluno Realiza o Exame
+
+INSERT INTO OndeRealiza (idEscola, idAluno) VALUES ('5','1');
+INSERT INTO OndeRealiza (idEscola, idAluno) VALUES ('5','2');
+INSERT INTO OndeRealiza (idEscola, idAluno) VALUES ('3', '5');
+INSERT INTO OndeRealiza (idEscola, idAluno) VALUES ('3', '4');
+INSERT INTO OndeRealiza (idEscola, idAluno) VALUES ('2', '4');
+
