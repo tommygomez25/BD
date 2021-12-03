@@ -17,14 +17,13 @@ DROP TABLE IF EXISTS Curso;
 DROP TABLE IF EXISTS SubTipoCurso;
 DROP TABLE IF EXISTS TipoCurso;
 
-
 ------------------------
 
 
 CREATE TABLE Distrito(
 	codDistrito int PRIMARY KEY
 			 CONSTRAINT check_codDistrito CHECK ((codDistrito > 0) AND (codDistrito <= 19 OR codDistrito = 22 OR codDistrito = 99)),
-	nome varchar(20) CONSTRAINT nome_distrito_unique UNIQUE -- nao mostra os 20 carateres do nome
+	nome varchar(20) CONSTRAINT nome_distrito_unique UNIQUE 
 			 CONSTRAINT notnull_nome_distrito NOT NULL
 );
 
@@ -56,16 +55,16 @@ CREATE TABLE Escola(
 
 CREATE TABLE TipoCurso(
 	codTipoCurso char(1) PRIMARY KEY
-			  CONSTRAINT check_codTipoCurso CHECK (codTipoCurso = 'C' OR
-							       codTipoCurso = 'E' OR
-							       codTipoCurso = 'N' OR
-							       codTipoCurso = 'P' OR
-							       codTipoCurso = 'Q' OR
-							       codTipoCurso = 'R' OR
-							       codTipoCurso = 'T' OR
-							       codTipoCurso = 'U' OR
-							       codTipoCurso = 'V' OR
-							       codTipoCurso = 'W'),
+			  CONSTRAINT check_codTipoCurso CHECK (codTipoCurso IN ('C',
+										'E',
+										'N',
+										'P',
+										'Q',
+										'R',
+										'T',
+										'U',
+										'V',
+										'W')),
 	nome varchar(100) CONSTRAINT notnull_nome NOT NULL 
 			  CONSTRAINT nome_unique UNIQUE,
 	anoEscInicio int  CONSTRAINT notnull_anoEscInicio NOT NULL,
@@ -87,8 +86,8 @@ CREATE TABLE SubTipoCurso(
 
 CREATE TABLE Curso(
 	codCurso char(3) PRIMARY KEY,
-	nome varchar(50) CONSTRAINT nome_curso_unique UNIQUE
-			 CONSTRAINT notnull_nome_curso NOT NULL,
+	nome varchar(50)    CONSTRAINT nome_curso_unique UNIQUE
+			    CONSTRAINT notnull_nome_curso NOT NULL,
 	codSubTipoCurso int CONSTRAINT notnull_codSubTipoCurso NOT NULL
 			    CONSTRAINT foreignkey_codSubTipoCurso REFERENCES SubTipoCurso(codSubTipoCurso) ON DELETE CASCADE
 													   ON UPDATE CASCADE
@@ -114,7 +113,7 @@ CREATE TABLE Exame(
 				CONSTRAINT check_fase CHECK (fase = 1 OR 
 							     fase = 2),
 	anoLetivo char(9)    	CONSTRAINT notnull_anoLetivo NOT NULL
-				CONSTRAINT check_anoLetivo CHECK (CAST (SUBSTR(anoLetivo,6,4) AS INT) = CAST(SUBSTR(anoLetivo,1,4) AS INT) + 1) ,
+				CONSTRAINT check_anoLetivo CHECK (CAST (SUBSTR(anoLetivo,6,4) AS INT) = CAST(SUBSTR(anoLetivo,1,4) AS INT) + 1 AND SUBSTR(anoLetivo,5,1) = '/') ,
 	dataRealizacao date     CONSTRAINT notnull_dataRealizacao NOT NULL
 				CONSTRAINT check_year CHECK(strftime('%Y', dataRealizacao) = SUBSTR(anoLetivo,6,4)),
 	codExame char(3)	CONSTRAINT notnull_codExame NOT NULL
@@ -146,20 +145,22 @@ CREATE TABLE AlunoRealiza(
 										      ON UPDATE CASCADE,
 	idExame int 	      CONSTRAINT foreignkey_idExame REFERENCES Exame(idExame) ON DELETE CASCADE
 										      ON UPDATE CASCADE,
-	idSitFreq varchar(20)     CONSTRAINT check_idSitFreq CHECK (idSitFreq = 'Admitido a exame' OR 
-						                    idSitFreq = 'Anulou a matrícula' OR
-						                    idSitFreq = 'Excluído por faltas' OR
-						                    idSitFreq = 'Reprovou frequência'),
+	idSitFreq varchar(20) CONSTRAINT check_idSitFreq CHECK (idSitFreq IN ('Admitido a exame',
+								    	      'Anulou a matrícula',
+									      'Excluído por faltas',
+									      'Reprovou frequência'));
 	serInterno char(1)    CONSTRAINT notnull_serInterno NOT NULL
 			      CONSTRAINT check_serInterno CHECK (serInterno = 'S' OR 
 							         serInterno = 'N'),
-	classInt int	      CONSTRAINT check_classInt CHECK (classInt >= 0 AND classInt <= 20),
-	notaExame real        CONSTRAINT notnull_notaExame NOT NULL
+	classInt int	      DEFAULT '0'
+			      CONSTRAINT check_classInt CHECK (classInt >= 0 AND classInt <= 20),
+	notaExame real        DEFAULT '0.0'
+			      CONSTRAINT notnull_notaExame NOT NULL
 			      CONSTRAINT check_notaExame CHECK (notaExame >= 0.0 AND notaExame <= 20.0),
 	classFinal int        CONSTRAINT notnull_classFinal NOT NULL,
 	paraAprov char(1)     CONSTRAINT notnull_paraAprov NOT NULL
 			      CONSTRAINT check_paraAprov CHECK (paraAprov = 'S' OR 
-							      paraAprov = 'N'),
+							        paraAprov = 'N'),
 	paraMelhoria char(1)  CONSTRAINT notnull_paraMelhoria NOT NULL
 			      CONSTRAINT check_paraMelhoria CHECK (paraMelhoria = 'S' OR 
 							           paraMelhoria = 'N'),
