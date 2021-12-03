@@ -103,45 +103,33 @@ CREATE TABLE Aluno(
 						      sexo = 'F'),
 	dataNasc date      CONSTRAINT notnull_dataNasc NOT NULL,
 	anoEscolaridade int,
-	codCurso char(3) /* CONSTRAINT notnull_codCurso NOT NULL */ CONSTRAINT foreignkey_codCurso REFERENCES Curso(codCurso) ON DELETE SET NULL
+	codCurso char(3) /* CONSTRAINT notnull_codCurso NOT NULL */ CONSTRAINT foreignkey_codCurso REFERENCES Curso(codCurso) ON DELETE CASCADE
 							   				      				      ON UPDATE CASCADE
 );
 
 CREATE TABLE Exame(
 	idExame int PRIMARY KEY,
-	codExame char(3)        CONSTRAINT notnull_codExame NOT NULL
-				CONSTRAINT check_codExame CHECK((codExame = '138' AND disciplina = 'Português Língua Segunda') OR
-								(codExame = '501' AND disciplina = 'Alemão') OR
-								(codExame = '517' AND disciplina = 'Francês') OR
-								(codExame = '547' AND disciplina = 'Espanhol') OR
-								(codExame = '550' AND disciplina = 'Inglês') OR
-								(codExame = '623' AND disciplina = 'História A') OR
-								(codExame = '635' AND disciplina = 'Matemática A') OR
-								(codExame = '639' AND disciplina = 'Português') OR
-								(codExame = '702' AND disciplina = 'Biologia e Geologia') OR
-								(codExame = '706' AND disciplina = 'Desenho A') OR
-								(codExame = '708' AND disciplina = 'Geometria Descritiva A') OR
-								(codExame = '712' AND disciplina = 'Economia A') OR
-								(codExame = '714' AND disciplina = 'Filosofia') OR
-								(codExame = '715' AND disciplina = 'Física e Quimica A') OR
-								(codExame = '719' AND disciplina = 'Geografia A') OR
-								(codExame = '723' AND disciplina = 'História B') OR
-								(codExame = '724' AND disciplina = 'História e Cultura das Artes') OR
-								(codExame = '732' AND disciplina = 'Latim A') OR
-								(codExame = '734' AND disciplina = 'Literatura Portuguesa') OR
-								(codExame = '735' AND disciplina = 'Matemática B') OR
-								(codExame = '835' AND disciplina = 'Matemática Aplicada às Ciências Sociais') OR
-								(codExame = '839' AND disciplina = 'Português Língua Não Materna')),
-	disciplina varchar(30)  CONSTRAINT notnull_disciplina NOT NULL,
+	
 	fase int                CONSTRAINT notnull_fase NOT NULL
 				CONSTRAINT check_fase CHECK (fase = 1 OR 
 							     fase = 2),
-	anoLetivoInicio date    CONSTRAINT notnull_anoLetivoInicio NOT NULL,  
-	anoLetivoFim date       CONSTRAINT notnull_anoLetivoFim NOT NULL
-				CONSTRAINT check_anoLetivo CHECK (anoLetivoFim = anoLetivoInicio + 1),
+	anoLetivo char(9)    	CONSTRAINT notnull_anoLetivo NOT NULL
+				CONSTRAINT check_anoLetivo CHECK (CAST (SUBSTR(anoLetivo,6,4) AS INT) = CAST(SUBSTR(anoLetivo,1,4) AS INT) + 1) ,
 	dataRealizacao date     CONSTRAINT notnull_dataRealizacao NOT NULL
-				CONSTRAINT check_year CHECK(strftime('%Y', dataRealizacao) = anoLetivoFim)
+				CONSTRAINT check_year CHECK(strftime('%Y', dataRealizacao) = SUBSTR(anoLetivo,6,4)),
+	codExame char(3)	CONSTRAINT notnull_codExame NOT NULL
+				CONSTRAINT foreignkey_codExame REFERENCES DisciplinaExame(codExame) ON DELETE CASCADE
+												    ON UPDATE CASCADE
 	                        
+);
+
+CREATE TABLE DisciplinaExame(
+	codExame char(3) PRIMARY KEY,      
+	disciplina varchar(30)  CONSTRAINT notnull_disciplina NOT NULL,
+	anoEscolaridade int     CONSTRAINT notnull_anoEscolaridade NOT NULL
+			        CONSTRAINT check_anoEscolaridade CHECK(anoEscolaridade = 11 OR 
+								       anoEscolaridade = 12) 
+	
 );
 
 CREATE TABLE OndeRealiza(
@@ -158,10 +146,10 @@ CREATE TABLE AlunoRealiza(
 										      ON UPDATE CASCADE,
 	idExame int 	      CONSTRAINT foreignkey_idExame REFERENCES Exame(idExame) ON DELETE CASCADE
 										      ON UPDATE CASCADE,
-	idSitFreq varchar(20) CONSTRAINT check_idSitFreq CHECK (idSitFreq = 'Admitido a exame' OR 
-						                idSitFreq = 'Anulou a matrícula' OR
-						                idSitFreq = 'Excluído por faltas' OR
-						                idSitFreq = 'Reprovou frequência'),
+	idSitFreq varchar(20)     CONSTRAINT check_idSitFreq CHECK (idSitFreq = 'Admitido a exame' OR 
+						                    idSitFreq = 'Anulou a matrícula' OR
+						                    idSitFreq = 'Excluído por faltas' OR
+						                    idSitFreq = 'Reprovou frequência'),
 	serInterno char(1)    CONSTRAINT notnull_serInterno NOT NULL
 			      CONSTRAINT check_serInterno CHECK (serInterno = 'S' OR 
 							         serInterno = 'N'),
@@ -181,9 +169,7 @@ CREATE TABLE AlunoRealiza(
 	CFCEPE char(1)        CONSTRAINT notnull_CFCEPE NOT NULL
 			      CONSTRAINT check_CFCEPE CHECK (CFCEPE = 'S' OR 
 							     CFCEPE = 'N'),
-	anoEscolaridade int   CONSTRAINT notnull_anoEscolaridade NOT NULL
-			      CONSTRAINT check_anoEscolaridade CHECK(anoEscolaridade = 11 OR 
-								     anoEscolaridade = 12),
+
   	
 	CONSTRAINT check_classFinal CHECK(CASE WHEN classInt IS NULL THEN CAST(notaExame+0.5 AS INT) WHEN classInt IS NOT NULL THEN classFinal = CAST((CAST(classInt AS REAL)*0.7 + notaExame*0.3) AS INT) END) ,
 	CONSTRAINT check_aluno_aprovado CHECK (paraAprov = 'N' AND classInt >= 14),
