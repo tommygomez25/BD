@@ -10,12 +10,14 @@ DROP TABLE IF EXISTS Concelho;
 DROP TABLE IF EXISTS Escola;
 DROP TABLE IF EXISTS Aluno;
 DROP TABLE IF EXISTS OndeRealiza;
+DROP TABLE IF EXISTS DisciplinaExame;
 DROP TABLE IF EXISTS Exame;
 DROP TABLE IF EXISTS AlunoRealiza;
 DROP TABLE IF EXISTS SitFreq;
 DROP TABLE IF EXISTS Curso;
 DROP TABLE IF EXISTS SubTipoCurso;
 DROP TABLE IF EXISTS TipoCurso;
+
 
 ------------------------
 
@@ -148,7 +150,7 @@ CREATE TABLE AlunoRealiza(
 	idSitFreq varchar(20) CONSTRAINT check_idSitFreq CHECK (idSitFreq IN ('Admitido a exame',
 								    	      'Anulou a matrícula',
 									      'Excluído por faltas',
-									      'Reprovou frequência'));
+									      'Reprovou frequência')),
 	serInterno char(1)    CONSTRAINT notnull_serInterno NOT NULL
 			      CONSTRAINT check_serInterno CHECK (serInterno = 'S' OR 
 							         serInterno = 'N'),
@@ -180,14 +182,3 @@ CREATE TABLE AlunoRealiza(
 
 
 COMMIT;
-
-
-
-
-
-
-
-
-
-
-
