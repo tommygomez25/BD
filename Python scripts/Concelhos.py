@@ -12,7 +12,8 @@ mylist = df['Descr'].tolist()
 list2 = df['Concelho'].tolist()
 list3 = df['Nuts3'].tolist()
 list4 = df['Distrito'].tolist()
+j = 1
 for i in range(len(mylist)):
-    print("INSERT INTO Concelho(idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('" + str(i) + "', '"+ str(list2[i]) + "', '" + str(mylist[i]) + "', '" + str(list3[i]) + "', '" + str(list4[i]) + "');")
-
+    print("INSERT INTO Concelho(idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('" + str(j) + "', '"+ str(list2[i]) + "', '" + str(mylist[i]) + "', '" + str(list3[i]) + "', '" + str(list4[i]) + "');")
+    j += 1
     
