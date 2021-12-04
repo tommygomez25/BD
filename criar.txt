@@ -49,7 +49,7 @@ CREATE TABLE Escola(
 	codDGEEC int      CONSTRAINT codDGEEC_unique UNIQUE 
 		          CONSTRAINT notnull_codDGEEC NOT NULL,
 	tipo char(7)      CONSTRAINT notnull_tipo_escola NOT NULL
-		          CONSTRAINT check_tipo_escola CHECK(tipo = 'PUBLICO' OR tipo = 'PRIVADO'),
+		          CONSTRAINT check_tipo_escola CHECK(tipo = 'PÚBLICO' OR tipo = 'PRIVADO'),
 	idConcelho int    CONSTRAINT notnull_idConcelho NOT NULL
 			  CONSTRAINT foreignkey_idConcelho REFERENCES Concelho(idConcelho) ON DELETE RESTRICT
 										           ON UPDATE CASCADE	    
@@ -88,7 +88,7 @@ CREATE TABLE SubTipoCurso(
 
 CREATE TABLE Curso(
 	codCurso char(3) PRIMARY KEY,
-	nome varchar(50)    CONSTRAINT nome_curso_unique UNIQUE
+	nome varchar(50)    /*CONSTRAINT nome_curso_unique UNIQUE*/
 			    CONSTRAINT notnull_nome_curso NOT NULL,
 	codSubTipoCurso int CONSTRAINT notnull_codSubTipoCurso NOT NULL
 			    CONSTRAINT foreignkey_codSubTipoCurso REFERENCES SubTipoCurso(codSubTipoCurso) ON DELETE CASCADE
