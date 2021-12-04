@@ -174,9 +174,9 @@ CREATE TABLE AlunoRealiza(
 							     CFCEPE = 'N'),
 
   	
-	CONSTRAINT check_classFinal CHECK(CASE WHEN classInt IS NULL THEN CAST(notaExame+0.5 AS INT) WHEN classInt IS NOT NULL THEN classFinal = CAST((CAST(classInt AS REAL)*0.7 + notaExame*0.3) AS INT) END) ,
-	CONSTRAINT check_aluno_aprovado CHECK (paraAprov = 'N' AND classInt >= 14),
-	CONSTRAINT check_aluno_nao_aprovado CHECK (paraAprov='S' AND classInt < 14), 
+	CONSTRAINT check_classFinal CHECK(CASE WHEN classInt IS NULL THEN CAST(notaExame+0.5 AS INT) WHEN classInt <> 0 THEN classFinal = CAST((CAST(classInt AS REAL)*0.7 + notaExame*0.3) AS INT) END) ,
+	CONSTRAINT check_aluno_aprovado CHECK(CASE WHEN classInt >= 14 THEN  paraAprov = 'N' END),
+	CONSTRAINT check_aluno_nao_aprovado CHECK(CASE WHEN classInt < 14 THEN paraAprov='S'  END), 
 	PRIMARY KEY(idAluno, idExame)
 );
 
