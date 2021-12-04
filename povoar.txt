@@ -363,14 +363,12 @@ INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES (
 INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('22', 'Escola Secundária do Monte da Caparica', '402266', '1503427', 'PÚBLICO', '3');
 INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('23', 'Escola Básica do Centro de Portugal', '330036', '510409', 'PÚBLICO', '10');
 INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('24', 'Escola Básica e Secundária À Beira Douro, Gondomar', '344321', '1304679', 'PÚBLICO', '4');
-INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('25', 'Escola Básica e Secundária de São Roque do Pico', '290634', '63012901', 'PÚBLICO', '17');
-INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('26', 'Escola Básica e Secundária de Machico', '390066', '1904750', 'PÚBLICO', '4');
-INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('27', 'Externato Carvalho Araújo', '950028', '303581', 'PRIVADO', '3');
-INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('28', 'Colégio Cidade Roda', '380459', '1015777', 'PRIVADO', '15');
-INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('29', 'Externato Marista de Lisboa', '503708', '1106712', 'PRIVADO', '6');
-INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('30', 'Colégio D. Dinis (Stª Catarina)', '380491', '1312392', 'PRIVADO', '12');
-INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('31', 'Colégio Santo André', '517708', '1109902', 'PRIVADO', '9');
-INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('32', 'Externato Senhora do Carmo', '505559', '1305010', 'PRIVADO', '5');
+INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('25', 'Externato Carvalho Araújo', '950028', '303581', 'PRIVADO', '3');
+INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('26', 'Colégio Cidade Roda', '380459', '1015777', 'PRIVADO', '15');
+INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('27', 'Externato Marista de Lisboa', '503708', '1106712', 'PRIVADO', '6');
+INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('28', 'Colégio D. Dinis (Stª Catarina)', '380491', '1312392', 'PRIVADO', '12');
+INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('29', 'Colégio Santo André', '517708', '1109902', 'PRIVADO', '9');
+INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('30', 'Externato Senhora do Carmo', '505559', '1305010', 'PRIVADO', '5');
 
 
 -- Tipo de Curso
