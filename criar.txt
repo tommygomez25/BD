@@ -10,7 +10,6 @@ DROP TABLE IF EXISTS Concelho;
 DROP TABLE IF EXISTS Escola;
 DROP TABLE IF EXISTS Aluno;
 DROP TABLE IF EXISTS OndeRealiza;
-DROP TABLE IF EXISTS DisciplinaExame;
 DROP TABLE IF EXISTS Exame;
 DROP TABLE IF EXISTS AlunoRealiza;
 DROP TABLE IF EXISTS SitFreq;
@@ -18,31 +17,26 @@ DROP TABLE IF EXISTS Curso;
 DROP TABLE IF EXISTS SubTipoCurso;
 DROP TABLE IF EXISTS TipoCurso;
 
-
 ------------------------
 
 
 CREATE TABLE Distrito(
-	codDistrito int PRIMARY KEY,
-	nome varchar(20) NOT NULL,
-
-	CONSTRAINT check_codDistrito CHECK ((codDistrito > 0) AND (codDistrito <= 19 OR codDistrito = 22 OR codDistrito = 99)),
-	CONSTRAINT nome_distrito_unique UNIQUE (nome)
+	codDistrito int PRIMARY KEY
+			 CONSTRAINT check_codDistrito CHECK ((codDistrito > 0) AND (codDistrito <= 19 OR codDistrito = 22 OR codDistrito = 99)),
+	nome varchar(20) CONSTRAINT nome_distrito_unique UNIQUE 
+			 CONSTRAINT notnull_nome_distrito NOT NULL
 );
 
 CREATE TABLE Concelho(
 	idConcelho int PRIMARY KEY,
-	codConcelho int,
-	nome varchar(30),
+	codConcelho int  CONSTRAINT notnull_codConcelho NOT NULL
+      			 CONSTRAINT check_codConcelho CHECK (CASE WHEN codDistrito = 99 THEN codConcelho = 99 WHEN codDistrito <> 99 THEN codConcelho <> 99 END),
+	nome varchar(30) CONSTRAINT nome_concelho_unique UNIQUE 
+			 CONSTRAINT notnull_nome_concelho NOT NULL,
 	codNUTS3 char(3),
-	codDistrito int,   
-	CONSTRAINT notnull_codConcelho NOT NULL,
-      	CONSTRAINT check_codConcelho CHECK (CASE WHEN codDistrito = 99 THEN codConcelho = 99 WHEN codDistrito <> 99 THEN codConcelho <> 99 END),
-	CONSTRAINT nome_concelho_unique UNIQUE, 
-	CONSTRAINT notnull_nome_concelho NOT NULL,
-  	CONSTRAINT notnull_codDistrito NOT NULL ,
-	CONSTRAINT foreignkey_codDistrito REFERENCES Distrito(codDistrito) ON DELETE RESTRICT
-									   ON UPDATE CASCADE
+	codDistrito int  CONSTRAINT notnull_codDistrito NOT NULL 
+			 CONSTRAINT foreignkey_codDistrito REFERENCES Distrito(codDistrito) ON DELETE RESTRICT
+											    ON UPDATE CASCADE
 );
 
 CREATE TABLE Escola(
@@ -53,7 +47,7 @@ CREATE TABLE Escola(
 	codDGEEC int      CONSTRAINT codDGEEC_unique UNIQUE 
 		          CONSTRAINT notnull_codDGEEC NOT NULL,
 	tipo char(7)      CONSTRAINT notnull_tipo_escola NOT NULL
-		          CONSTRAINT check_tipo_escola CHECK(tipo = 'PÚBLICO' OR tipo = 'PRIVADO'),
+		          CONSTRAINT check_tipo_escola CHECK(tipo = 'PUBLICO' OR tipo = 'PRIVADO'),
 	idConcelho int    CONSTRAINT notnull_idConcelho NOT NULL
 			  CONSTRAINT foreignkey_idConcelho REFERENCES Concelho(idConcelho) ON DELETE RESTRICT
 										           ON UPDATE CASCADE	    
@@ -92,7 +86,7 @@ CREATE TABLE SubTipoCurso(
 
 CREATE TABLE Curso(
 	codCurso char(3) PRIMARY KEY,
-	nome varchar(50)    /*CONSTRAINT nome_curso_unique UNIQUE*/
+	nome varchar(50)    CONSTRAINT nome_curso_unique UNIQUE
 			    CONSTRAINT notnull_nome_curso NOT NULL,
 	codSubTipoCurso int CONSTRAINT notnull_codSubTipoCurso NOT NULL
 			    CONSTRAINT foreignkey_codSubTipoCurso REFERENCES SubTipoCurso(codSubTipoCurso) ON DELETE CASCADE
@@ -154,13 +148,16 @@ CREATE TABLE AlunoRealiza(
 	idSitFreq varchar(20) CONSTRAINT check_idSitFreq CHECK (idSitFreq IN ('Admitido a exame',
 								    	      'Anulou a matrícula',
 									      'Excluído por faltas',
-									      'Reprovou frequência')),
+									      'Reprovou frequência'));
 	serInterno char(1)    CONSTRAINT notnull_serInterno NOT NULL
 			      CONSTRAINT check_serInterno CHECK (serInterno = 'S' OR 
 							         serInterno = 'N'),
+	classInt int	      DEFAULT '0'
+			      CONSTRAINT check_classInt CHECK (classInt >= 0 AND classInt <= 20),
 	notaExame real        DEFAULT '0.0'
 			      CONSTRAINT notnull_notaExame NOT NULL
 			      CONSTRAINT check_notaExame CHECK (notaExame >= 0.0 AND notaExame <= 20.0),
+	classFinal int        CONSTRAINT notnull_classFinal NOT NULL,
 	paraAprov char(1)     CONSTRAINT notnull_paraAprov NOT NULL
 			      CONSTRAINT check_paraAprov CHECK (paraAprov = 'S' OR 
 							        paraAprov = 'N'),
@@ -173,8 +170,24 @@ CREATE TABLE AlunoRealiza(
 	CFCEPE char(1)        CONSTRAINT notnull_CFCEPE NOT NULL
 			      CONSTRAINT check_CFCEPE CHECK (CFCEPE = 'S' OR 
 							     CFCEPE = 'N'),
- 
+
+  	
+	CONSTRAINT check_classFinal CHECK(CASE WHEN classInt IS NULL THEN CAST(notaExame+0.5 AS INT) WHEN classInt IS NOT NULL THEN classFinal = CAST((CAST(classInt AS REAL)*0.7 + notaExame*0.3) AS INT) END) ,
+	CONSTRAINT check_aluno_aprovado CHECK (paraAprov = 'N' AND classInt >= 14),
+	CONSTRAINT check_aluno_nao_aprovado CHECK (paraAprov='S' AND classInt < 14), 
 	PRIMARY KEY(idAluno, idExame)
 );
 
+
 COMMIT;
+
+
+
+
+
+
+
+
+
+
+
