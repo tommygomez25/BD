@@ -154,12 +154,9 @@ CREATE TABLE AlunoRealiza(
 	serInterno char(1)    CONSTRAINT notnull_serInterno NOT NULL
 			      CONSTRAINT check_serInterno CHECK (serInterno = 'S' OR 
 							         serInterno = 'N'),
-	classInt int	      DEFAULT '0'
-			      CONSTRAINT check_classInt CHECK (classInt >= 0 AND classInt <= 20),
 	notaExame real        DEFAULT '0.0'
 			      CONSTRAINT notnull_notaExame NOT NULL
 			      CONSTRAINT check_notaExame CHECK (notaExame >= 0.0 AND notaExame <= 20.0),
-	classFinal int        CONSTRAINT notnull_classFinal NOT NULL,
 	paraAprov char(1)     CONSTRAINT notnull_paraAprov NOT NULL
 			      CONSTRAINT check_paraAprov CHECK (paraAprov = 'S' OR 
 							        paraAprov = 'N'),
@@ -172,11 +169,7 @@ CREATE TABLE AlunoRealiza(
 	CFCEPE char(1)        CONSTRAINT notnull_CFCEPE NOT NULL
 			      CONSTRAINT check_CFCEPE CHECK (CFCEPE = 'S' OR 
 							     CFCEPE = 'N'),
-
-  	
-	CONSTRAINT check_classFinal CHECK(CASE WHEN classInt IS NULL THEN CAST(notaExame+0.5 AS INT) WHEN classInt <> 0 THEN classFinal = CAST((CAST(classInt AS REAL)*0.7 + notaExame*0.3) AS INT) END) ,
-	CONSTRAINT check_aluno_aprovado CHECK(CASE WHEN classInt >= 14 THEN  paraAprov = 'N' END),
-	CONSTRAINT check_aluno_nao_aprovado CHECK(CASE WHEN classInt < 14 THEN paraAprov='S'  END), 
+ 
 	PRIMARY KEY(idAluno, idExame)
 );
 

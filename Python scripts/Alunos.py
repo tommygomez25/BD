@@ -21,5 +21,5 @@ j = 1
 
 for i in range(len(nome)):
     dataNascimento = str(random.randrange(1999,2004)) + "-" + str(random.randrange(1,12)) + "-" + str(random.randrange(1,28))
-    print ("INSERT INTO Aluno (idAluno, nome, sexo, dataNasc, anoEscolaridade, codCurso) VALUES ('" + str(j) + "', '"+ str(nome[i]) + "', ''" + ", '" + dataNascimento + ", '" + random.choice(mylist) + "', '"  + str(codCurso[random.randrange(0,len(codCurso))])+ "');")
+    print ("INSERT INTO Aluno (idAluno, nome, sexo, dataNasc, anoEscolaridade, codCurso) VALUES ('" + str(j) + "', '"+ str(nome[i]) + "', ''" + ", '" + dataNascimento + "', '" + random.choice(mylist) + "', '"  + str(codCurso[random.randrange(0,len(codCurso))])+ "');")
     j += 1

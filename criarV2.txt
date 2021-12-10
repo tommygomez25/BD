@@ -27,6 +27,7 @@ CREATE TABLE Distrito(
 			 CONSTRAINT check_codDistrito CHECK ((codDistrito > 0) AND (codDistrito <= 19 OR codDistrito = 22 OR codDistrito = 99)),
 	nome varchar(20) CONSTRAINT nome_distrito_unique UNIQUE 
 			 CONSTRAINT notnull_nome_distrito NOT NULL
+			 CONSTRAINT check_nome_distrito_estrangeiro CHECK( CASE WHEN codDistrito = 99 THEN nome = Estrangeiro END)
 );
 
 CREATE TABLE Concelho(
