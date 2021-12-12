@@ -153,8 +153,6 @@ CREATE TABLE AlunoRealiza(
 	paraMelhoria char(1) NOT NULL,
 	provaIngresso char(1) NOT NULL,
 	CFCEPE char(1) NOT NULL,
-
-	PRIMARY KEY(idAluno, idExame)
  
 	CONSTRAINT check_idSitFreq CHECK (idSitFreq IN ('Admitido a exame', 'Anulou a matrícula', 'Excluído por faltas', 'Reprovou frequência')),
 	CONSTRAINT check_serInterno CHECK (serInterno = 'S' OR serInterno = 'N'),
@@ -167,6 +165,7 @@ CREATE TABLE AlunoRealiza(
 										     ON UPDATE CASCADE,
 	CONSTRAINT foreignkey_idExame FOREIGN KEY(idExame) REFERENCES Exame(idExame) ON DELETE CASCADE
 										     ON UPDATE CASCADE,
+	PRIMARY KEY(idAluno, idExame)
 
 	
 );
