@@ -97,12 +97,12 @@ CREATE TABLE Curso(
 CREATE TABLE Aluno(
 	idAluno int PRIMARY KEY,
 	nome varchar(100) NOT NULL,
-	sexo char(1) DEFAULT '?' NOT NULL, 
+	sexo char(1) NOT NULL ON CONFLICT REPLACE DEFAULT '?', 
 	dataNascimento date NOT NULL,
 	anoEscolaridade int,
 	codCurso char(3) NOT NULL,
   
-	CONSTRAINT check_sexo CHECK(sexo = 'M' OR sexo = 'F'),
+	CONSTRAINT check_sexo CHECK(sexo = 'M' OR sexo = 'F' OR sexo = '?'),
 	CONSTRAINT check_anoEscolaridade CHECK(anoEscolaridade = '12' OR anoEscolaridade = '11' OR anoEscolaridade = NULL)
 	CONSTRAINT foreignkey_codCurso FOREIGN KEY(codCurso) REFERENCES Curso(codCurso) ON DELETE CASCADE
 							   	  			ON UPDATE CASCADE
@@ -148,7 +148,7 @@ CREATE TABLE AlunoRealiza(
 	idExame int,
 	idSitFreq varchar(20),
 	serInterno char(1) NOT NULL,
-	notaExame real DEFAULT '0.0' NOT NULL,
+	notaExame real NOT NULL ON CONFLICT REPLACE DEFAULT '0.0',
 	paraAprov char(1) NOT NULL,
 	paraMelhoria char(1) NOT NULL,
 	provaIngresso char(1) NOT NULL,

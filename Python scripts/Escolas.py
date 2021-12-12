@@ -22,8 +22,7 @@ for i in range(len(tipo)):
         tipo[i] = 'PRIVADO'
 
 
-k = 1
-for j in range(len(nome)):
-    if (j% 20 == 0):
-        print("INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('" + str(k) + "', '"+ str(nome[j]) + "', '" + str(codDGAE[j]) + "', '" + str(codDGEEC[j]) + "', '" + str(tipo[j]) + "', '" + str(idConcelho[j]) + "');")
-        k += 1
+k = 320
+for j in range(320,619):
+    print("INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('" + str(k) + "', '"+ str(nome[j]) + "', '" + str(codDGAE[j]) + "', '" + str(codDGEEC[j]) + "', '" + str(tipo[j]) + "', '" + str(idConcelho[j]) + "');")
+    k += 1
