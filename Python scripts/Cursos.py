@@ -12,5 +12,5 @@ codCurso = df['Curso'].tolist()
 nome = df['Descr'].tolist()
 subTipo = df['SubTipo'].tolist()
 
-for i in range(len(codCurso)):
+for i in range(0,234):
     print("INSERT INTO Curso(codCurso, nome, codSubTipoCurso) VALUES ('" + str(codCurso[i]) + "', '"+ nome[i] + "', '" + str(subTipo[i])  + "');")
