@@ -102,7 +102,7 @@ CREATE TABLE Aluno(
 	anoEscolaridade int,
 	codCurso char(3) NOT NULL,
   
-	CONSTRAINT check_sexo CHECK(sexo = 'M' OR sexo = 'F'),
+	CONSTRAINT check_sexo CHECK(sexo = 'M' OR sexo = 'F' OR sexo = '?'),
 	CONSTRAINT check_anoEscolaridade CHECK(anoEscolaridade = '12' OR anoEscolaridade = '11' OR anoEscolaridade = NULL)
 	CONSTRAINT foreignkey_codCurso FOREIGN KEY(codCurso) REFERENCES Curso(codCurso) ON DELETE CASCADE
 							   	  			ON UPDATE CASCADE
