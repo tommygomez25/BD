@@ -5,6 +5,7 @@ BEGIN TRANSACTION;
 .headers on
 
 -- Distritos
+
 INSERT INTO Distrito (codDistrito, nome) VALUES ('1', 'Aveiro');
 INSERT INTO Distrito (codDistrito, nome) VALUES ('2', 'Beja');
 INSERT INTO Distrito (codDistrito, nome) VALUES ('3', 'Braga');
@@ -340,7 +341,6 @@ INSERT INTO Concelho(idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUE
 INSERT INTO Concelho(idConcelho, codConcelho, nome, codNUTS3, codDistrito) VALUES ('309', '99', 'Estrangeiro', '', '99');
 
 -- Escolas 
-
 
 INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('1', 'Escola Básica e Secundária de Michel Giacometti', '346226', '1511640', 'PÚBLICO', '11');
 INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('2', 'Escola Básica e Secundária Dr. João de Brito Camacho, Almodôvar', '345805', '202249', 'PÚBLICO', '2');
@@ -962,6 +962,7 @@ INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES (
 INSERT INTO Escola(idEscola, nome, codDGAE, codDGEEC, tipo, idConcelho) VALUES ('618', 'Escola Internacional de Torres Vedras', '502754', '1113977', 'PRIVADO', '13');
 
 -- Tipo de Curso
+
 INSERT INTO TipoCurso (codTipoCurso, nome, anoEscInicio, anoEscFinal) VALUES ('C', 'Cursos complementares dos 10º/11º anos', '10', '11');
 INSERT INTO TipoCurso (codTipoCurso, nome, anoEscInicio, anoEscFinal) VALUES ('E', 'Via de ensino do 12º ano', '12', '12');
 INSERT INTO TipoCurso (codTipoCurso, nome, anoEscInicio, anoEscFinal) VALUES ('N', 'Nivel secundario de educacao', '10', '12');
@@ -974,6 +975,7 @@ INSERT INTO TipoCurso (codTipoCurso, nome, anoEscInicio, anoEscFinal) VALUES ('V
 INSERT INTO TipoCurso (codTipoCurso, nome, anoEscInicio, anoEscFinal) VALUES ('W', 'Via profissionalizante dos 10º/12º anos', '10', '12');
 
 -- Sub Tipo de Curso
+
 INSERT INTO SubTipoCurso(codSubTipoCurso, nome, codTipoCurso) VALUES ('C01', 'Cursos diurnos', 'C');
 INSERT INTO SubTipoCurso(codSubTipoCurso, nome, codTipoCurso) VALUES ('C02', 'Cursos nocturnos', 'C');
 INSERT INTO SubTipoCurso(codSubTipoCurso, nome, codTipoCurso) VALUES ('C03', 'Equivalência a curso complementar', 'C');
@@ -1065,6 +1067,7 @@ INSERT INTO SubTipoCurso(codSubTipoCurso, nome, codTipoCurso) VALUES ('V01', 'Vi
 INSERT INTO SubTipoCurso(codSubTipoCurso, nome, codTipoCurso) VALUES ('W01', 'Via profissionalizante dos 10º/12º anos', 'W');
 
 -- Curso
+
 INSERT INTO Curso(codCurso, nome, codSubTipoCurso) VALUES ('001', '1.º Curso', 'E01');
 INSERT INTO Curso(codCurso, nome, codSubTipoCurso) VALUES ('002', '2.º Curso', 'E01');
 INSERT INTO Curso(codCurso, nome, codSubTipoCurso) VALUES ('003', '3.º Curso', 'E01');
@@ -1900,7 +1903,6 @@ INSERT INTO Aluno (idAluno, nome, sexo, dataNascimento, anoEscolaridade, codCurs
 INSERT INTO Aluno (idAluno, nome, sexo, dataNascimento, anoEscolaridade, codCurso) VALUES ('99', 'Vitória Reis', 'F', '1999-3-2', ' ', 'A42');
 INSERT INTO Aluno (idAluno, nome, sexo, dataNascimento, anoEscolaridade, codCurso) VALUES ('100', 'Jorge Jesus', NULL, '1999-3-4', ' ', '060');
 
-
 -- DisciplinaExame
 
 INSERT INTO DisciplinaExame(codExame, disciplina, anoEscolaridade) VALUES('138','Português Língua Segunda','12');
@@ -1925,7 +1927,6 @@ INSERT INTO DisciplinaExame(codExame, disciplina, anoEscolaridade) VALUES('734',
 INSERT INTO DisciplinaExame(codExame, disciplina, anoEscolaridade) VALUES('735','Matemática B','12');
 INSERT INTO DisciplinaExame(codExame, disciplina, anoEscolaridade) VALUES('835','Matemática Aplicada às Ciências Sociais','11');
 INSERT INTO DisciplinaExame(codExame, disciplina, anoEscolaridade) VALUES('839','Português Língua Não Materna','12');
-
 
 -- Exame
 
@@ -2125,104 +2126,105 @@ INSERT INTO OndeRealiza(idEscola, idAluno) VALUES ('180', '99');
 INSERT INTO OndeRealiza(idEscola, idAluno) VALUES ('237', '100');
 
 -- Aluno Realiza
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('1', '1', 'Anulou a matrícula', 'N', '8.7', 'S', 'S', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('1', '2', 'Admitido a exame', 'S', '20.0', 'S', 'N', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('2', '2', 'Excluído por faltas', 'N', '19.2', 'S', 'S', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('3', '3', 'Anulou a matrícula', 'N', '18.7', 'S', 'N', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('4', '9', 'Anulou a matrícula', 'N', '10.3', 'S', 'N', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('5', '5', 'Admitido a exame', 'S', '15.2', 'N', 'S', 'S', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('6', '7', 'Admitido a exame', 'S', '17.7', 'N', 'N', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('7', '7', 'Admitido a exame', 'S', '3.5', 'N', 'N', 'S', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('8', '15', 'Admitido a exame', 'S', '10.1', 'N', 'N', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('9', '9', 'Excluído por faltas', 'N', '13.7', 'S', 'N', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('10', '10', 'Anulou a matrícula', 'N', '4.1', 'S', 'S', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('11', '11', 'Anulou a matrícula', 'N', '9.6', 'S', 'N', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('12', '12', 'Anulou a matrícula', 'N', '16.9', 'S', 'N', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('13', '22', 'Excluído por faltas', 'N', '3.8', 'S', 'S', 'S', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('14', '14', 'Excluído por faltas', 'N', '0.7', 'S', 'S', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('15', '15', 'Excluído por faltas', 'N', '2.5', 'S', 'N', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('16', '40', 'Admitido a exame', 'S', '1.2', 'N', 'N', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('17', '17', 'Excluído por faltas', 'N', '4.4', 'S', 'S', 'S', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('18', '18', 'Admitido a exame', 'S', '0.6', 'N', 'N', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('19', '19', 'Admitido a exame', 'S', '15.7', 'N', 'S', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('20', '20', 'Reprovou frequência', 'N', '15.7', 'S', 'S', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('21', '21', 'Admitido a exame', 'S', '0.2', 'N', 'N', 'S', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('22', '22', 'Excluído por faltas', 'N', '16.0', 'S', 'N', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('23', '23', 'Anulou a matrícula', 'N', '11.4', 'S', 'N', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('24', '24', 'Admitido a exame', 'S', '16.4', 'N', 'N', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('25', '25', 'Reprovou frequência', 'N', '17.0', 'S', 'N', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('26', '26', 'Admitido a exame', 'S', '8.8', 'N', 'S', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('27', '27', 'Anulou a matrícula', 'N', '10.5', 'S', 'N', 'S', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('28', '28', 'Admitido a exame', 'S', '9.4', 'N', 'N', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('29', '29', 'Anulou a matrícula', 'N', '8.0', 'S', 'S', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('30', '30', 'Reprovou frequência', 'N', '0.2', 'S', 'N', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('31', '31', 'Anulou a matrícula', 'N', '18.1', 'S', 'N', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('32', '32', 'Anulou a matrícula', 'N', '16.9', 'S', 'N', 'S', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('33', '33', 'Anulou a matrícula', 'N', '9.0', 'S', 'S', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('34', '34', 'Reprovou frequência', 'N', '1.4', 'S', 'S', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('35', '35', 'Admitido a exame', 'S', '8.2', 'N', 'S', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('36', '36', 'Admitido a exame', 'S', '2.9', 'N', 'S', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('37', '37', 'Admitido a exame', 'S', '2.4', 'N', 'S', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('38', '38', 'Admitido a exame', 'S', '12.1', 'N', 'N', 'S', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('39', '39', 'Excluído por faltas', 'N', '4.0', 'S', 'S', 'S', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('40', '40', 'Admitido a exame', 'S', '13.3', 'N', 'N', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('41', '41', 'Anulou a matrícula', 'N', '11.4', 'S', 'S', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('42', '42', 'Anulou a matrícula', 'N', '10.1', 'S', 'N', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('43', '43', 'Excluído por faltas', 'N', '11.1', 'S', 'S', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('44', '44', 'Anulou a matrícula', 'N', '10.8', 'S', 'S', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('45', '45', 'Admitido a exame', 'S', '19.2', 'N', 'S', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('46', '46', 'Excluído por faltas', 'N', '8.1', 'S', 'S', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('47', '47', 'Anulou a matrícula', 'N', '18.5', 'S', 'N', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('48', '48', 'Reprovou frequência', 'N', '4.4', 'S', 'S', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('49', '49', 'Anulou a matrícula', 'N', '17.1', 'S', 'S', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('50', '50', 'Excluído por faltas', 'N', '1.7', 'S', 'S', 'S', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('51', '51', 'Reprovou frequência', 'N', '10.9', 'S', 'N', 'S', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('52', '52', 'Excluído por faltas', 'N', '5.3', 'S', 'S', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('53', '53', 'Reprovou frequência', 'N', '6.4', 'S', 'N', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('54', '54', 'Reprovou frequência', 'N', '19.4', 'S', 'N', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('55', '55', 'Admitido a exame', 'S', '6.7', 'N', 'S', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('56', '56', 'Anulou a matrícula', 'N', '0.8', 'S', 'N', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('57', '57', 'Reprovou frequência', 'N', '1.1', 'S', 'S', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('58', '58', 'Excluído por faltas', 'N', '13.8', 'S', 'S', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('59', '59', 'Admitido a exame', 'S', '7.5', 'N', 'S', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('60', '60', 'Anulou a matrícula', 'N', '3.3', 'S', 'N', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('61', '61', 'Admitido a exame', 'S', '4.9', 'N', 'N', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('62', '62', 'Reprovou frequência', 'N', '4.1', 'S', 'N', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('63', '63', 'Admitido a exame', 'S', '10.6', 'N', 'S', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('64', '64', 'Admitido a exame', 'S', '3.3', 'N', 'N', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('65', '65', 'Anulou a matrícula', 'N', '7.1', 'S', 'S', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('66', '66', 'Reprovou frequência', 'N', '8.6', 'S', 'S', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('67', '67', 'Excluído por faltas', 'N', NULL, 'S', 'S', 'S', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('68', '43', 'Excluído por faltas', 'N', '8.7', 'S', 'S', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('69', '26', 'Excluído por faltas', 'N', '19.5', 'S', 'S', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('70', '19', 'Admitido a exame', 'S', '11.9', 'N', 'S', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('71', '4', 'Reprovou frequência', 'N', '3.2', 'S', 'S', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('72', '4', 'Excluído por faltas', 'N', '17.4', 'S', 'S', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('73', '43', 'Excluído por faltas', 'N', '9.2', 'S', 'S', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('74', '39', 'Reprovou frequência', 'N', '2.3', 'S', 'N', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('75', '32', 'Reprovou frequência', 'N', '6.9', 'S', 'N', 'S', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('76', '5', 'Reprovou frequência', 'N', '12.7', 'S', 'N', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('77', '39', 'Admitido a exame', 'S', '6.2', 'N', 'S', 'S', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('78', '32', 'Reprovou frequência', 'N', '18.4', 'S', 'S', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('79', '18', 'Reprovou frequência', 'N', '13.1', 'S', 'S', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('80', '8', 'Reprovou frequência', 'N', '3.0', 'S', 'S', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('81', '32', 'Anulou a matrícula', 'N', '0.1', 'S', 'N', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('82', '19', 'Excluído por faltas', 'N', '11.2', 'S', 'S', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('83', '2', 'Admitido a exame', 'S', '6.6', 'N', 'N', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('84', '35', 'Anulou a matrícula', 'N', '7.1', 'S', 'S', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('85', '21', 'Reprovou frequência', 'N', '2.2', 'S', 'N', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('86', '44', 'Admitido a exame', 'S', '1.8', 'N', 'N', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('87', '1', 'Reprovou frequência', 'N', '16.1', 'S', 'N', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('88', '13', 'Anulou a matrícula', 'N', '1.3', 'S', 'S', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('89', '27', 'Anulou a matrícula', 'N', '14.0', 'S', 'N', 'S', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('90', '5', 'Reprovou frequência', 'N', '3.5', 'S', 'S', 'S', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('91', '9', 'Excluído por faltas', 'N', '17.8', 'S', 'S', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('92', '38', 'Anulou a matrícula', 'N', '19.2', 'S', 'S', 'S', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('93', '17', 'Excluído por faltas', 'N', '14.7', 'S', 'S', 'N', 'S');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('94', '41', 'Excluído por faltas', 'N', '14.3', 'S', 'S', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('95', '2', 'Reprovou frequência', 'N', '11.9', 'S', 'N', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('96', '47', 'Admitido a exame', 'S', '4.8', 'N', 'N', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('97', '29', 'Admitido a exame', 'S', '19.5', 'N', 'N', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('98', '38', 'Admitido a exame', 'S', '6.5', 'N', 'S', 'N', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('99', '6', 'Excluído por faltas', 'N', '6.0', 'S', 'S', 'S', 'N');
-INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('100', '15', 'Anulou a matrícula', 'N', '2.2', 'S', 'N', 'N', 'N');
+
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('1', '1', 'Anulou a matrícula', 'N', '8.7', 'S', 'S', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('1', '2', 'Admitido a exame', 'S', '20.0', 'S', 'N', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('2', '2', 'Excluído por faltas', 'N', '19.2', 'S', 'S', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('3', '3', 'Anulou a matrícula', 'N', '18.7', 'S', 'N', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('4', '9', 'Anulou a matrícula', 'N', '10.3', 'S', 'N', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('5', '5', 'Admitido a exame', 'S', '15.2', 'N', 'S', 'S', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('6', '7', 'Admitido a exame', 'S', '17.7', 'N', 'N', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('7', '7', 'Admitido a exame', 'S', '3.5', 'N', 'N', 'S', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('8', '15', 'Admitido a exame', 'S', '10.1', 'N', 'N', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('9', '9', 'Excluído por faltas', 'N', '13.7', 'S', 'N', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('10', '10', 'Anulou a matrícula', 'N', '4.1', 'S', 'S', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('11', '11', 'Anulou a matrícula', 'N', '9.6', 'S', 'N', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('12', '12', 'Anulou a matrícula', 'N', '16.9', 'S', 'N', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('13', '22', 'Excluído por faltas', 'N', '3.8', 'S', 'S', 'S', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('14', '14', 'Excluído por faltas', 'N', '0.7', 'S', 'S', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('15', '15', 'Excluído por faltas', 'N', '2.5', 'S', 'N', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('16', '40', 'Admitido a exame', 'S', '1.2', 'N', 'N', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('17', '17', 'Excluído por faltas', 'N', '4.4', 'S', 'S', 'S', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('18', '18', 'Admitido a exame', 'S', '0.6', 'N', 'N', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('19', '19', 'Admitido a exame', 'S', '15.7', 'N', 'S', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('20', '20', 'Reprovou frequência', 'N', '15.7', 'S', 'S', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('21', '21', 'Admitido a exame', 'S', '0.2', 'N', 'N', 'S', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('22', '22', 'Excluído por faltas', 'N', '16.0', 'S', 'N', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('23', '23', 'Anulou a matrícula', 'N', '11.4', 'S', 'N', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('24', '24', 'Admitido a exame', 'S', '16.4', 'N', 'N', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('25', '25', 'Reprovou frequência', 'N', '17.0', 'S', 'N', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('26', '26', 'Admitido a exame', 'S', '8.8', 'N', 'S', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('27', '27', 'Anulou a matrícula', 'N', '10.5', 'S', 'N', 'S', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('28', '28', 'Admitido a exame', 'S', '9.4', 'N', 'N', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('29', '29', 'Anulou a matrícula', 'N', '8.0', 'S', 'S', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('30', '30', 'Reprovou frequência', 'N', '0.2', 'S', 'N', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('31', '31', 'Anulou a matrícula', 'N', '18.1', 'S', 'N', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('32', '32', 'Anulou a matrícula', 'N', '16.9', 'S', 'N', 'S', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('33', '33', 'Anulou a matrícula', 'N', '9.0', 'S', 'S', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('34', '34', 'Reprovou frequência', 'N', '1.4', 'S', 'S', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('35', '35', 'Admitido a exame', 'S', '8.2', 'N', 'S', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('36', '36', 'Admitido a exame', 'S', '2.9', 'N', 'S', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('37', '37', 'Admitido a exame', 'S', '2.4', 'N', 'S', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('38', '38', 'Admitido a exame', 'S', '12.1', 'N', 'N', 'S', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('39', '39', 'Excluído por faltas', 'N', '4.0', 'S', 'S', 'S', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('40', '40', 'Admitido a exame', 'S', '13.3', 'N', 'N', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('41', '41', 'Anulou a matrícula', 'N', '11.4', 'S', 'S', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('42', '42', 'Anulou a matrícula', 'N', '10.1', 'S', 'N', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('43', '43', 'Excluído por faltas', 'N', '11.1', 'S', 'S', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('44', '44', 'Anulou a matrícula', 'N', '10.8', 'S', 'S', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('45', '45', 'Admitido a exame', 'S', '19.2', 'N', 'S', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('46', '46', 'Excluído por faltas', 'N', '8.1', 'S', 'S', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('47', '47', 'Anulou a matrícula', 'N', '18.5', 'S', 'N', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('48', '48', 'Reprovou frequência', 'N', '4.4', 'S', 'S', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('49', '49', 'Anulou a matrícula', 'N', '17.1', 'S', 'S', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('50', '50', 'Excluído por faltas', 'N', '1.7', 'S', 'S', 'S', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('51', '51', 'Reprovou frequência', 'N', '10.9', 'S', 'N', 'S', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('52', '52', 'Excluído por faltas', 'N', '5.3', 'S', 'S', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('53', '53', 'Reprovou frequência', 'N', '6.4', 'S', 'N', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('54', '54', 'Reprovou frequência', 'N', '19.4', 'S', 'N', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('55', '55', 'Admitido a exame', 'S', '6.7', 'N', 'S', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('56', '56', 'Anulou a matrícula', 'N', '0.8', 'S', 'N', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('57', '57', 'Reprovou frequência', 'N', '1.1', 'S', 'S', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('58', '58', 'Excluído por faltas', 'N', '13.8', 'S', 'S', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('59', '59', 'Admitido a exame', 'S', '7.5', 'N', 'S', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('60', '60', 'Anulou a matrícula', 'N', '3.3', 'S', 'N', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('61', '61', 'Admitido a exame', 'S', '4.9', 'N', 'N', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('62', '62', 'Reprovou frequência', 'N', '4.1', 'S', 'N', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('63', '63', 'Admitido a exame', 'S', '10.6', 'N', 'S', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('64', '64', 'Admitido a exame', 'S', '3.3', 'N', 'N', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('65', '65', 'Anulou a matrícula', 'N', '7.1', 'S', 'S', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('66', '66', 'Reprovou frequência', 'N', '8.6', 'S', 'S', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('67', '67', 'Excluído por faltas', 'N', NULL, 'S', 'S', 'S', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('68', '43', 'Excluído por faltas', 'N', '8.7', 'S', 'S', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('69', '26', 'Excluído por faltas', 'N', '19.5', 'S', 'S', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('70', '19', 'Admitido a exame', 'S', '11.9', 'N', 'S', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('71', '4', 'Reprovou frequência', 'N', '3.2', 'S', 'S', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('72', '4', 'Excluído por faltas', 'N', '17.4', 'S', 'S', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('73', '43', 'Excluído por faltas', 'N', '9.2', 'S', 'S', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('74', '39', 'Reprovou frequência', 'N', '2.3', 'S', 'N', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('75', '32', 'Reprovou frequência', 'N', '6.9', 'S', 'N', 'S', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('76', '5', 'Reprovou frequência', 'N', '12.7', 'S', 'N', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('77', '39', 'Admitido a exame', 'S', '6.2', 'N', 'S', 'S', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('78', '32', 'Reprovou frequência', 'N', '18.4', 'S', 'S', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('79', '18', 'Reprovou frequência', 'N', '13.1', 'S', 'S', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('80', '8', 'Reprovou frequência', 'N', '3.0', 'S', 'S', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('81', '32', 'Anulou a matrícula', 'N', '0.1', 'S', 'N', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('82', '19', 'Excluído por faltas', 'N', '11.2', 'S', 'S', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('83', '2', 'Admitido a exame', 'S', '6.6', 'N', 'N', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('84', '35', 'Anulou a matrícula', 'N', '7.1', 'S', 'S', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('85', '21', 'Reprovou frequência', 'N', '2.2', 'S', 'N', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('86', '44', 'Admitido a exame', 'S', '1.8', 'N', 'N', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('87', '1', 'Reprovou frequência', 'N', '16.1', 'S', 'N', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('88', '13', 'Anulou a matrícula', 'N', '1.3', 'S', 'S', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('89', '27', 'Anulou a matrícula', 'N', '14.0', 'S', 'N', 'S', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('90', '5', 'Reprovou frequência', 'N', '3.5', 'S', 'S', 'S', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('91', '9', 'Excluído por faltas', 'N', '17.8', 'S', 'S', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('92', '38', 'Anulou a matrícula', 'N', '19.2', 'S', 'S', 'S', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('93', '17', 'Excluído por faltas', 'N', '14.7', 'S', 'S', 'N', 'S');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('94', '41', 'Excluído por faltas', 'N', '14.3', 'S', 'S', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('95', '2', 'Reprovou frequência', 'N', '11.9', 'S', 'N', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('96', '47', 'Admitido a exame', 'S', '4.8', 'N', 'N', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('97', '29', 'Admitido a exame', 'S', '19.5', 'N', 'N', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('98', '38', 'Admitido a exame', 'S', '6.5', 'N', 'S', 'N', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('99', '6', 'Excluído por faltas', 'N', '6.0', 'S', 'S', 'S', 'N');
+INSERT INTO AlunoRealiza(idAluno, idExame, sitFrequencia, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('100', '15', 'Anulou a matrícula', 'N', '2.2', 'S', 'N', 'N', 'N');

@@ -145,7 +145,7 @@ CREATE TABLE OndeRealiza(
 CREATE TABLE AlunoRealiza(
 	idAluno int,
 	idExame int,
-	idSitFreq varchar(20),
+	sitFrequencia varchar(20),
 	serInterno char(1) NOT NULL,
 	notaExame real NOT NULL ON CONFLICT REPLACE DEFAULT '0.0',
 	paraAprov char(1) NOT NULL,
@@ -153,8 +153,9 @@ CREATE TABLE AlunoRealiza(
 	provaIngresso char(1) NOT NULL,
 	CFCEPE char(1) NOT NULL,
  
-	CONSTRAINT check_idSitFreq CHECK (idSitFreq IN ('Admitido a exame', 'Anulou a matrícula', 'Excluído por faltas', 'Reprovou frequência')),
+	CONSTRAINT check_sitFrequencia CHECK (sitFrequencia IN ('Admitido a exame', 'Anulou a matrícula', 'Excluído por faltas', 'Reprovou frequência')),
 	CONSTRAINT check_serInterno CHECK (serInterno = 'S' OR serInterno = 'N'),
+	CONSTRAINT check_sitFrequencia_serInterno CHECK (CASE WHEN serInterno = 'S' THEN sitFrequencia = 'Admitido a exame' END),
 	CONSTRAINT check_notaExame CHECK (notaExame >= 0.0 AND notaExame <= 20.0),
 	CONSTRAINT check_paraAprov CHECK (paraAprov = 'S' OR paraAprov = 'N'),
 	CONSTRAINT check_paraMelhoria CHECK (paraMelhoria = 'S' OR paraMelhoria = 'N'),
