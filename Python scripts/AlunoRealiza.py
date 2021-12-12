@@ -16,9 +16,9 @@ paraAprov = "N"
 paraMelhoria = ""
 provaIngresso = ""
 CFCEPE = ""
-j = 1
+j = 68
 
-for i in range(1,68):
+for i in range(33):
     sitFreq = random.choice(sitFreqPossiveis)
     if sitFreq == "Admitido a exame" :
         serInterno = "S"
@@ -34,6 +34,6 @@ for i in range(1,68):
         paraMelhoria = random.choice(S_N)
         provaIngresso = random.choice(S_N)
         CFCEPE = random.choice(S_N)
-    print("INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('" + str(j) + "', '" + str(j) + "', '" + sitFreq  + "', '" + serInterno + "', '"  + str(notaExame) + "', '"  + paraAprov + "', '" + paraMelhoria + "', '" + provaIngresso + "', '" + CFCEPE +"');")
+    print("INSERT INTO AlunoRealiza(idAluno, idExame, idSitFreq, serInterno, notaExame, paraAprov, paraMelhoria, provaIngresso, CFCEPE) VALUES ('" + str(j) + "', '" + str(random.randint(1, 50)) + "', '" + sitFreq  + "', '" + serInterno + "', '"  + str(notaExame) + "', '"  + paraAprov + "', '" + paraMelhoria + "', '" + provaIngresso + "', '" + CFCEPE +"');")
     j += 1
     
