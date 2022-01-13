@@ -1,5 +1,5 @@
 .mode columns
-.width 35 15
+.width 35 10
 .headers on
 .nullvalue NULL
 
