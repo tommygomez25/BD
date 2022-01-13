@@ -1,7 +1,9 @@
 .mode columns
-.width 35 10
+.width 35 15
 .headers on
 .nullvalue NULL
+
+//Mostrar o(s) aluno(s) com a nota máxima da base de dados
 
 SELECT nome, notaExame
 FROM AlunoRealiza AR1, Aluno
