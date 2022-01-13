@@ -3,7 +3,7 @@
 .headers on
 .nullvalue NULL
 
-//Ver quais são os alunos que realizaram um exame num escola do concelho de Aveiro
+//Ver quais são os alunos que realizaram um exame numa escola do concelho de Aveiro
 
 SELECT Aluno.idAluno as 'idAluno', Aluno.nome as 'nomeAluno', OndeRealiza.idEscola as 'idEscola', Esc.nome as 'nomeEscola',tipo 
 FROM (
