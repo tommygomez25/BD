@@ -3,6 +3,8 @@
 .headers on
 .nullvalue NULL
 
+//Média das notas por distrito
+
 
 SELECT Distrito.nome, ROUND(avg(notaExame),2) 'media'
 FROM AlunoRealiza, OndeRealiza, Escola, Concelho, Distrito
