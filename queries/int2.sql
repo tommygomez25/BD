@@ -3,7 +3,7 @@
 .headers on
 .nullvalue NULL
 
-//Percentagem de positivas por ano letivo
+--Percentagem de positivas por ano letivo
 
 SELECT positiva.anoLetivo, ROUND((CAST(numPositivas as REAL)/CAST (numTotal as REAL) * 100.0),2) 'positivas(%)'
 FROM(( 
