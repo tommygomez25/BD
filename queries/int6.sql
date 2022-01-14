@@ -3,7 +3,7 @@
 .headers on
 .nullvalue NULL
 
-//Valor absoluto da diferença entre as médias das Escolas Publicas e das Escolas Privadas
+--Valor absoluto da diferença entre as médias das Escolas Publicas e das Escolas Privadas
 
 SELECT ABS(mediaPublica.media - mediaPrivada.media) Diferença 
 FROM( 
