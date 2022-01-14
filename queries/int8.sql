@@ -3,7 +3,7 @@
 .headers on
 .nullvalue NULL
 
-//Mostrar as escolas que tiveram todas as notas superiores a 17.5
+--Mostrar as escolas que tiveram todas as notas superiores a 17.5
 
 SELECT DISTINCT Escola.idEscola, Escola.nome 
 FROM Escola JOIN OndeRealiza USING(idEscola) 
