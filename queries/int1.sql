@@ -3,7 +3,7 @@
 .headers on
 .nullvalue NULL
 
-//Média das notas dos exames, por disciplina
+--Média das notas dos exames, por disciplina
 
 SELECT disciplina, round(avg(notaExame),2)'average_exams' 
 FROM (	
