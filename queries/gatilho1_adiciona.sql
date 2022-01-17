@@ -12,7 +12,7 @@ AFTER INSERT ON Aluno
 FOR EACH ROW 
 WHEN NEW.anoEscolaridade = 12
 BEGIN 
-    INSERT INTO AlunoRealiza VALUES(NEW.idAluno,52,NULL,'S',NULL,'N','N','S','N');
+    INSERT INTO AlunoRealiza VALUES(NEW.idAluno,52,NULL,'S',NULL,'N','N','N','N');
 END;
 
 --Quando se cria um novo aluno do 12º ano do curso de Ciências e Tecnologias/Ciências Socioeconómicas 
@@ -23,7 +23,7 @@ AFTER INSERT ON Aluno
 FOR EACH ROW 
 WHEN NEW.anoEscolaridade = 12 AND (NEW.codCurso = 'C60'OR NEW.codCurso = 'C61')
 BEGIN 
-    INSERT INTO AlunoRealiza VALUES(NEW.idAluno,51,NULL,'S',NULL,'N','N','S','N');
+    INSERT INTO AlunoRealiza VALUES(NEW.idAluno,51,NULL,'S',NULL,'N','N','N','N');
 END;
 
 
@@ -35,5 +35,5 @@ AFTER INSERT ON Aluno
 FOR EACH ROW 
 WHEN NEW.anoEscolaridade = 11 AND NEW.codCurso = 'C60'
 BEGIN 
-    INSERT INTO AlunoRealiza VALUES(NEW.idAluno,58,NULL,'S',NULL,'N','N','S','N');
+    INSERT INTO AlunoRealiza VALUES(NEW.idAluno,58,NULL,'S',NULL,'N','N','N','N');
 END;
