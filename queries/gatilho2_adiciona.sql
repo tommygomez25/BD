@@ -3,6 +3,9 @@
 .nullvalue NULL
 PRAGMA foreign_keys = ON;
 
+--Após a criação de uma nova disicplina de exame, é preciso criar dois exames no ano letivo mais recente
+--sendo um da 1ª fase e outro da 2ª fase
+
 CREATE TRIGGER IF NOT EXISTS InsertExame
 AFTER INSERT ON DisciplinaExame
 FOR EACH ROW
@@ -11,6 +14,7 @@ INSERT INTO Exame VALUES ( (select count(*) from exame) + 1, 1, '2020/2021', '01
 INSERT INTO Exame VALUES ( (select count(*) from exame) + 22, 2, '2020/2021', '01-01-2021', NEW.codExame);
 END;
 
+--Se um aluno que foi a um exame da 1ª fase
 
 CREATE TRIGGER IF NOT EXISTS InsertAlunoReprovado
 AFTER INSERT ON AlunoRealiza
