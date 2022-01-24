@@ -67,7 +67,7 @@ SELECT * FROM AlunoRealiza where idAluno = 1 and idExame = 5;
 .print 'Atualização dos dados para: nota de Exame = 12.0 e para aprovação'
 .print ''
 
-UPDATE AlunoRealiza SET paraAprov = 'S', notaExame = '12.0' where idAluno = 1 and idExame = 4;
+UPDATE AlunoRealiza SET paraAprov = 'S', notaExame = '12.0' where idAluno = 1 and idExame = 5;
 
 .print ''
 .print 'Verificação da atualização e da não inscrição na 2 fase'
