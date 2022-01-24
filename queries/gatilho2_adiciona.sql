@@ -10,8 +10,8 @@ CREATE TRIGGER IF NOT EXISTS InsertExame
 AFTER INSERT ON DisciplinaExame
 FOR EACH ROW
 BEGIN
-INSERT INTO Exame VALUES ( (select count(*) from exame) + 1, 1, '2020/2021', '01-01-2021', NEW.codExame);
-INSERT INTO Exame VALUES ( (select count(*) from exame) + 22, 2, '2020/2021', '01-01-2021', NEW.codExame);
+INSERT INTO Exame VALUES ( (select count(*) from exame) + 1, 1, '2020/2021', '2021-01-01', NEW.codExame);
+INSERT INTO Exame VALUES ( (select count(*) from exame) + 22, 2, '2020/2021', '2021-01-01', NEW.codExame);
 END;
 
 --Se um aluno que foi a um exame da 1ª fase
