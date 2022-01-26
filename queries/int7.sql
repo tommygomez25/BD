@@ -16,4 +16,4 @@ WHERE not exists (
 	)
       AND AR1.idAluno = Aluno.idAluno AND OndeRealiza.idAluno = Aluno.idAluno
 GROUP BY OndeRealiza.idEscola
-ORDER BY notaExame;
+ORDER BY notaExame desc;
