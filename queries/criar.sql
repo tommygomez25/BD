@@ -147,7 +147,7 @@ CREATE TABLE AlunoRealiza(
 	idExame int,
 	sitFrequencia varchar(20),
 	serInterno char(1) NOT NULL,
-	notaExame real NOT NULL ON CONFLICT REPLACE DEFAULT '0.0',
+	notaExame real,
 	paraAprov char(1) NOT NULL,
 	paraMelhoria char(1) NOT NULL,
 	provaIngresso char(1) NOT NULL,
