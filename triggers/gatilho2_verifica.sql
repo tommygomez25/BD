@@ -5,8 +5,7 @@
 PRAGMA foreign_keys = ON;
 
 .print ''
-.print 'Inserção de um aluno realiza com idAluno 1, idExame 3, nota de exame 8.4 e para '
-.print 'aprovação'
+.print 'Inserção de um aluno realiza com idAluno 1, idExame 3, nota de exame 8.4 e para aprovação'
 .print ''
 
 INSERT INTO AlunoRealiza Values(1, 3, 'Admitido a exame', 'S', 8.4, 'S', 'N', 'S', 'N');
@@ -26,11 +25,10 @@ SELECT * FROM AlunoRealiza where idAluno = 1 and idExame = 3;
 SELECT * FROM AlunoRealiza where idAluno = 1 and (idExame = 3 OR idExame = 25);
 
 .print ''
-.print 'Inserção de um aluno realiza com idAluno 1, idExame 4, nota de exame 0.0 e não para '
-.print 'aprovação'
+.print 'Inserção de um aluno realiza com idAluno 1, idExame 4, nota de exame nula e não para aprovação'
 .print ''
 
-INSERT INTO AlunoRealiza Values(1, 4, 'Admitido a exame', 'S', 0.0, 'N', 'N', 'S', 'N');
+INSERT INTO AlunoRealiza Values(1, 4, 'Admitido a exame', 'S', NULL, 'N', 'N', 'S', 'N');
 
 .print ''
 .print 'Verificação da criação'
@@ -51,11 +49,10 @@ UPDATE AlunoRealiza SET paraAprov = 'S', notaExame = '6.0' where idAluno = 1 and
 SELECT * FROM AlunoRealiza where idAluno = 1 and (idExame = 4 OR idExame = 26);
 
 .print ''
-.print 'Inserção de um aluno realiza com idAluno 1, idExame 5, nota de exame 0.0 e não para '
-.print 'aprovação'
+.print 'Inserção de um aluno realiza com idAluno 1, idExame 5, nota de exame nula e não para aprovação'
 .print ''
 
-INSERT INTO AlunoRealiza Values(1, 5, 'Admitido a exame', 'S', 0.0, 'N', 'N', 'S', 'N');
+INSERT INTO AlunoRealiza Values(1, 5, 'Admitido a exame', 'S', NULL, 'N', 'N', 'S', 'N');
 
 .print ''
 .print 'Verificação da criação'
