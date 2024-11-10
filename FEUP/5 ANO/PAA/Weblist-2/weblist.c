@@ -6,16 +6,15 @@
     #include <math.h> // INCLUI <math.h> PARA USO DA FUNÇÃO log2
     #include <limits.h> // INCLUI <limits.h> PARA USO DE INT_MAX E INT_MIN
 
-    // Declaração da função balanceWebList para evitar declaração implícita
-    int balanceWebList(pweblist web);
-
         // Função para criar a WebList e inicializar cada nó com DDLLs vazias
-    int cWL(ppweblist web, int level, int sizedata) {
+int cWL(ppweblist web, int level, int sizedata) {
     *web = (pweblist)malloc(sizeof(struct weblist));
     if (!(*web)) return FAIL;
 
     (*web)->level = level;
-    (*web)->node_count = (level == 0) ? 1 : (int)pow(8, level) + 1;
+
+    // Número total de nós: 1 para nível 0, 9 para nível 1, 8^n + 1 para níveis superiores
+    (*web)->node_count = (level == 0) ? 1 : (int)pow(8, level) + 1; // 8^n + 1
     (*web)->nodes = (WebListNode *)malloc((*web)->node_count * sizeof(WebListNode));
     if (!(*web)->nodes) {
         free(*web);
@@ -24,6 +23,7 @@
 
     // Inicializa cada nó
     for (int i = 0; i < (*web)->node_count; i++) {
+        // Se for nível 0, o único nó é uma folha; se for nível 1, os nós 1 a 8 são folhas
         (*web)->nodes[i].is_leaf = (level == 0 || (level == 1 && i > 0));
 
         if ((*web)->nodes[i].is_leaf) {
@@ -48,6 +48,7 @@
                 (*web)->nodes[i].children[j] = NULL; // Inicializa filhos como NULL
             }
         }
+        printf("Nó %d criado com sucesso. (Folha: %d)\n", i, (*web)->nodes[i].is_leaf);
     }
 
     (*web)->sizedata = sizedata;
@@ -106,25 +107,28 @@
     */
 
     // Função para destruir a WebList
-    int dWL(pweblist *web) {
-        if (!web || !(*web)) return FAIL;
+int dWL(pweblist *web) {
+    if (!web || !(*web)) return FAIL;
 
-        for (int i = 0; i < (*web)->node_count; i++) {
-            if ((*web)->nodes[i].is_leaf) {
-                for (int j = 0; j < 8; j++) {
-                    if ((*web)->nodes[i].lists[j].list) {
-                        dDDLL(&((*web)->nodes[i].lists[j].list));
-                    }
+    // Percorre cada nó da WebList
+    for (int i = 0; i < (*web)->node_count; i++) {
+        if ((*web)->nodes[i].is_leaf) {
+            // Para nós folha, libera todas as listas
+            for (int j = 0; j < 8; j++) {
+                if ((*web)->nodes[i].lists[j].list) {
+                    dDDLL(&((*web)->nodes[i].lists[j].list)); // Libera a DDLL
                 }
             }
         }
-        
-        free((*web)->nodes);
-        free(*web);
-        *web = NULL;
-
-        return SUCCESS;
     }
+
+    // Libera a memória alocada para os nós e a estrutura da WebList
+    free((*web)->nodes);
+    free(*web);
+    *web = NULL; // Define o ponteiro como NULL para evitar dangling pointer
+
+    return SUCCESS;
+}
 
     //função para inserir dado com verificação de balanceamento
     //distribui a carga entre os nós de forma cíclica,

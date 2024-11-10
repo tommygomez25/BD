@@ -1,10 +1,6 @@
-#include <stdio.h>
+#include "main.h"
 #include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include "main.h" // Inclua suas definições de tipo e declarações de função
 
-// Funções de impressão
 void printInt(void *data) {
     printf("  Dado: %d\n", *(int*)data);
 }
@@ -17,9 +13,10 @@ void printString(void *data) {
     printf("  Dado: %s\n", *(char**)data);
 }
 
-// Função para testar e exibir uma WebList de inteiros
-void testWebListIntegers() {
+int main() {
     pweblist webInt;
+
+    // Testando WebList de inteiros
     if (cWL(&webInt, 0, sizeof(int)) == SUCCESS) {
         printf("Testing integer WebList:\n");
 
@@ -32,68 +29,85 @@ void testWebListIntegers() {
             }
         }
 
-        pLista(webInt, printInt);
-        
-        // Remover dados e verificar balanceamento
-        int removeInt[] = {25, 17};
-        for (int i = 0; i < 2; i++) {
-            if (rDado(webInt, &removeInt[i]) == FAIL) {
-                printf("Failed to remove integer: %d\n", removeInt[i]);
-            } else {
-                printf("Removed integer: %d\n", removeInt[i]);
-            }
-        }
-
-        if (balanceWebList(webInt) == SUCCESS) {
-            printf("WebList is balanced\n");
+        int searchInt = 3;
+        if (bDado(webInt, &searchInt) == SUCCESS) {
+            printf("Found integer: %d\n", searchInt);
         } else {
-            printf("WebList is not balanced\n");
+            printf("Integer not found: %d\n", searchInt);
         }
 
-        // Mostrar a WebList
         pLista(webInt, printInt);
         
-        dWL(&webInt); // Liberar a WebList
-    }
-}
+        int key = 2;
+        pDDLL ddll = NULL;
 
-// Função para testar e exibir uma WebList de nível 1
-// Função para testar e exibir uma WebList de nível 1
-void testWebListLevel1() {
-    pweblist webInt;
-    if (cWL(&webInt, 1, sizeof(int)) == SUCCESS) {
-        printf("\nTesting integer WebList at level 1 with 8000 elements:\n");
-
-        // Inserir 8000 elementos
-        for (int i = 0; i < 100; i++) {
-            if (iDado(webInt, &i) == FAIL) {
-                printf("Failed to insert integer: %d\n", i);
-            } else {
-                printf("Inserted integer: %d\n", i);
-            }
-        }
-
-        // Exibir a WebList
-        pLista(webInt, printInt);
-        
-        // Verificar balanceamento
-        if (balanceWebList(webInt) == SUCCESS) {
-            printf("WebList is balanced after insertion\n");
+        if (cpLista(webInt, key, &ddll) == SUCCESS) {
+            printf("Copied list from key %d:\n", key);
+            int count = countElements(ddll);
+            printf("  Number of elements: %d\n", count);
         } else {
-            printf("WebList is not balanced after insertion\n");
+            printf("Failed to copy list from key %d\n", key);
+        }
+    
+        pDDLL ptr_rmLista = NULL;
+        
+        if (rmLista(webInt, key, &ptr_rmLista) == SUCCESS) {
+            printf("Removed list from key %d:\n", key);
+            int count = countElements(ptr_rmLista);
+            printf("  Number of elements: %d\n", count);
+        } else {
+            printf("Failed to remove list from key %d\n", key);
+        }
+    
+        if (nvLista(webInt, key) == SUCCESS) {
+            printf("Created new list for key %d\n", key);
+        } else {
+            printf("Failed to create new list for key %d\n", key);
         }
 
-        dWL(&webInt); // Liberar a WebList
+        int eleCount;
+        if (nroEleNoFolha(webInt->nodes[0], &eleCount) == SUCCESS) {
+            printf("Number of elements in leaf node: %d\n", eleCount);
+        } else {
+            printf("Failed to get number of elements in leaf node\n");
+        }
+
+        int leafCount;
+        if (nroNoFolha(webInt, &leafCount) == SUCCESS) {
+            printf("Number of leaf nodes: %d\n", leafCount);
+        } else {
+            printf("Failed to get number of leaf nodes\n");
+        }
+
+        int totalEleCount;
+        if (nroEleWL(webInt, &totalEleCount) == SUCCESS) {
+            printf("Total number of elements: %d\n", totalEleCount);
+        } else {
+            printf("Failed to get total number of elements\n");
+        }
+        
+        pDDLL keyList;
+        if (cDDLL(&keyList, sizeof(int)) == FAIL) {
+            printf("Failed to create DDLL for keys\n");
+            dWL(&webInt);
+            return -1;
+        }
+
+        if (lstChaves(webInt, &keyList) == SUCCESS) {
+            printf("List of keys:\n");
+            int keyData;
+            int position = 0;
+            while (sPosition(keyList, position, &keyData) == SUCCESS) {
+                printf("  Key %d: %d\n", position, keyData);
+                position++;
+            }
+        } else {
+            printf("Failed to get list of keys\n");
+        }
+        dDDLL(&keyList);
+        dDDLL(&ptr_rmLista);
+        dWL(&webInt);
     }
-}
-
-// Função principal
-int main() {
-    // Testar WebList de inteiros
-    testWebListIntegers();
-
-    // Testar WebList de nível 1
-    testWebListLevel1();
 
     return 0;
 }
